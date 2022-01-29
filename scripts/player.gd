@@ -1,5 +1,7 @@
 extends KinematicBody
 
+signal died
+
 export(float) var gravity = -30
 export(float) var max_speed = 4
 export(float) var acceleration = 12
@@ -7,14 +9,20 @@ export(float) var deceleration = 8
 export(float) var jump_speed = 15
 export(float) var mouse_sensitivity = 0.002  # radians/pixel
 export(float) var max_health = 5.0
+export(float) var damage_cooldown = 1.0
 
 onready var _camera = get_node("RotationHelper/Camera")
 onready var _rotation_helper = get_node("RotationHelper")
+onready var _damage_cooldown = get_node("DamageCooldown")
+
 onready var _left_hand = get_node("CanvasLayer/LeftHand")
 onready var _right_hand = get_node("CanvasLayer/RightHand")
 
+onready var _health_bar = get_node("CanvasLayer/HealthBar")
+onready var _health_bar_fill = get_node("CanvasLayer/HealthBar/Fill")
+
 var _velocity = Vector3()
-var _health = 5.0
+var _health
 
 
 #-------------------------------------------------------------------------------
@@ -28,6 +36,8 @@ func _ready():
 	
 	_left_hand.parent = self
 	_right_hand.parent = self
+	
+	_health = max_health
 	
 
 #-------------------------------------------------------------------------------
@@ -129,8 +139,21 @@ func _on_PickupArea_body_entered(body):
 
 #-------------------------------------------------------------------------------
 func damage(amount):
-	_health -= amount
-	print(_health)
+	# If the damage cooldown has expired and there's still health left.
+	if _damage_cooldown.is_stopped() and _health > 0:
+		_health -= amount
+		print(_health)
+		
+		# Starts the damage cooldown timer.
+		_damage_cooldown.start(damage_cooldown)
+		
+		# Checks if the character has died and prints it out if so.
+		if _health <= 0:
+			_health = 0
+			emit_signal("died")
+		
+		var health_percent = _health / max_health
+		_health_bar_fill.rect_size.x = _health_bar.rect_size.x * health_percent
 	
 
 #-------------------------------------------------------------------------------

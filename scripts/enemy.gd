@@ -14,22 +14,28 @@ var _player_within_damage_range = false
 
 #-------------------------------------------------------------------------------
 func _physics_process(delta):
+	# Applies gravity.
 	_velocity.y += gravity * delta
 	
+	# Gets the player's position if within range of the player.
 	if _player:
 		target = _player.transform.origin
 	
+	# Accelerates in the direction of the target.
 	var direction = (target - global_transform.origin).normalized()
 	_velocity += direction * acceleration * delta
 	
+	# Caps non vertical speed to a max speed.
 	var horizontal_vel = Vector2(_velocity.x, _velocity.z)
 	if horizontal_vel.length_squared() > max_speed * max_speed:
 		horizontal_vel = horizontal_vel.normalized() * max_speed
 		_velocity.x = horizontal_vel.x
 		_velocity.z = horizontal_vel.y
-		
+	
+	# Moves by the velocity.
 	_velocity = move_and_slide(_velocity, Vector3.UP)
 	
+	# Damages the player if still within range.
 	if _player_within_damage_range and _player:
 		_player.damage(damage)
 

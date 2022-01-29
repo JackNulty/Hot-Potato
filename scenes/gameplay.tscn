@@ -12,6 +12,7 @@ transform = Transform( 12.0755, 0, 0, 0, 1, 0, 0, 0, 11.4102, 0, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
+max_health = 8.0
 
 [node name="Holdable" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.85366, -0.520831, 0, 0.520831, 0.85366, 0, 0, 0, 1, 0.0685468, 5.27714, -4.32165 )
@@ -24,4 +25,3 @@ transform = Transform( 0.85366, -0.520831, 0, 0.520831, 0.85366, 0, 0, 0, 1, 4.0
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25263, 1.10245, 0 )
-target = Vector3( 0, 0, 0 )
