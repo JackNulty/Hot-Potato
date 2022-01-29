@@ -1,9 +1,12 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/objects/stairs.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://assets/images/floor_text.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/cobble.png" type="Texture" id=3]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.490196, 0.462745, 0.462745, 1 )
+albedo_texture = ExtResource( 3 )
 
 [sub_resource type="CubeMesh" id=2]
 material = SubResource( 1 )
@@ -11,11 +14,11 @@ material = SubResource( 1 )
 [sub_resource type="ConvexPolygonShape" id=3]
 points = PoolVector3Array( 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, -1, 1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1 )
 
-[sub_resource type="SpatialMaterial" id=4]
-albedo_color = Color( 0.364706, 0.305882, 0.270588, 1 )
+[sub_resource type="SpatialMaterial" id=28]
+albedo_texture = ExtResource( 2 )
 
 [sub_resource type="CubeMesh" id=5]
-material = SubResource( 4 )
+material = SubResource( 28 )
 
 [sub_resource type="ConvexPolygonShape" id=6]
 points = PoolVector3Array( 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, -1, 1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1 )
@@ -48,7 +51,7 @@ material/0 = null
 shape = SubResource( 3 )
 
 [node name="Floor" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.59362, -0.0201973, 0.0530188 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.59312, -0.0201972, 0.0474579 )
 mesh = SubResource( 5 )
 material/0 = null
 
