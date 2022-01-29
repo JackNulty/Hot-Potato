@@ -7,11 +7,14 @@ export(float) var deceleration = 8
 export(float) var jump_speed = 15
 export(float) var mouse_sensitivity = 0.002  # radians/pixel
 
+# preloads for audio effects
+onready var playerwalk : AudioStream = preload("res://assets/audio/sfx/Walk1.wav")
+onready var playerrun : AudioStream = preload("res://assets/audio/sfx/Run2.wav")
+
 onready var camera = get_node("RotationHelper/Camera")
 onready var rotation_helper = get_node("RotationHelper")
 
 var velocity = Vector3()
-
 
 #-------------------------------------------------------------------------------
 # Runs when this script loads in a scene.
@@ -22,7 +25,6 @@ func _ready():
 	# Captures the mouse cursor.
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
-
 #-------------------------------------------------------------------------------
 # Handles input as soon as it's available.
 func _input(event):
@@ -60,6 +62,11 @@ func _physics_process(delta):
 	# Gets the player input as a movement vector (method defined below). 
 	var input = get_movement_input()
 	
+	if input.length_squared() != 0.0:
+		AudioManager.player_run(playerrun)
+	else:
+		AudioManager.stop_player_run()
+	
 	# Works out the acceleration and deceleration/friction, a little complex.
 	var acceleration_vector = input * acceleration * delta
 	var deceleration_vector = (Vector3.ONE - Vector3(abs(input.x), 1.0, abs(input.z))) * deceleration * delta
@@ -86,14 +93,18 @@ func _physics_process(delta):
 #-------------------------------------------------------------------------------
 func get_movement_input():
 	var input_dir = Vector3.ZERO
-	
+
 	# desired move in camera direction
 	if Input.is_action_pressed("move_forward"):
 		input_dir += -camera.global_transform.basis.z
+		#print(translation)
+		
 	if Input.is_action_pressed("move_backwards"):
 		input_dir += camera.global_transform.basis.z
+		
 	if Input.is_action_pressed("strafe_left"):
 		input_dir += -camera.global_transform.basis.x
+				
 	if Input.is_action_pressed("strafe_right"):
 		input_dir += camera.global_transform.basis.x
 		

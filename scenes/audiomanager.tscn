@@ -7,10 +7,16 @@ script = ExtResource( 1 )
 
 [node name="sfx" type="Spatial" parent="."]
 
-[node name="SFX" type="AudioStreamPlayer3D" parent="sfx"]
+[node name="PlayerRun" type="AudioStreamPlayer3D" parent="sfx"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.767523, 0 )
+bus = "SFX"
+
+[node name="temp" type="AudioStreamPlayer3D" parent="sfx"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.767523, 0 )
 bus = "SFX"
 
 [node name="music" type="Spatial" parent="."]
 
 [node name="Music" type="AudioStreamPlayer3D" parent="music"]
+visible = false
 bus = "Music"
