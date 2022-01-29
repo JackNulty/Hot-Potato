@@ -24,6 +24,9 @@ func _ready():
 	# Captures the mouse cursor.
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
+	_left_hand.parent = self
+	_right_hand.parent = self
+	
 
 #-------------------------------------------------------------------------------
 # Handles input as soon as it's available.
@@ -37,6 +40,12 @@ func _input(event):
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			get_tree().set_input_as_handled()
+	
+	# Throws the item in either hand if the throw button was pressed.
+	if event.is_action_pressed("throw_left"):
+		_left_hand.throw()
+	if event.is_action_pressed("throw_right"):
+		_right_hand.throw()
 
 
 #-------------------------------------------------------------------------------
@@ -61,6 +70,9 @@ func _physics_process(delta):
 	
 	# Gets the player input as a movement vector (method defined below). 
 	var input = get_movement_input()
+	
+	if input.length_squared() != 0.0:
+		pass
 	
 	# Works out the acceleration and deceleration/friction, a little complex.
 	var acceleration_vector = input * acceleration * delta
@@ -91,13 +103,13 @@ func get_movement_input():
 	
 	# desired move in camera direction
 	if Input.is_action_pressed("move_forward"):
-		input_dir += -_camera.global_transform.basis.z
+		input_dir += -global_transform.basis.z
 	if Input.is_action_pressed("move_backwards"):
-		input_dir += _camera.global_transform.basis.z
+		input_dir += global_transform.basis.z
 	if Input.is_action_pressed("strafe_left"):
-		input_dir += -_camera.global_transform.basis.x
+		input_dir += -global_transform.basis.x
 	if Input.is_action_pressed("strafe_right"):
-		input_dir += _camera.global_transform.basis.x
+		input_dir += global_transform.basis.x
 		
 	input_dir = input_dir.normalized()
 	return input_dir
@@ -105,7 +117,7 @@ func get_movement_input():
 
 #-------------------------------------------------------------------------------
 func _on_PickupArea_body_entered(body):
-	if body.is_in_group("holdable"):
+	if body.is_in_group("holdable") and not body.locked: 
 		
 		# If not holding something in the right hand, equip the holdable there.
 		if not _right_hand.holding:
