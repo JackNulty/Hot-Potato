@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/icon.png-e2b956fc1cad352d3b1bbca4fcd64fa9.s3tc.stex"
-path.etc2="res://.import/icon.png-e2b956fc1cad352d3b1bbca4fcd64fa9.etc2.stex"
+path.s3tc="res://.import/sword.png-897119c336e4acb70cc8bb980baf06fa.s3tc.stex"
+path.etc2="res://.import/sword.png-897119c336e4acb70cc8bb980baf06fa.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/images/icon.png"
-dest_files=[ "res://.import/icon.png-e2b956fc1cad352d3b1bbca4fcd64fa9.s3tc.stex", "res://.import/icon.png-e2b956fc1cad352d3b1bbca4fcd64fa9.etc2.stex" ]
+source_file="res://assets/images/sword.png"
+dest_files=[ "res://.import/sword.png-897119c336e4acb70cc8bb980baf06fa.s3tc.stex", "res://.import/sword.png-897119c336e4acb70cc8bb980baf06fa.etc2.stex" ]
 
 [params]
 
@@ -22,7 +22,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
-flags/filter=true
+flags/filter=false
 flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=1
