@@ -149,7 +149,6 @@ func damage(amount):
 	# If the damage cooldown has expired and there's still health left.
 	if _damage_cooldown.is_stopped() and _health > 0:
 		_health -= amount
-		print(_health)
 		
 		# Starts the damage cooldown timer.
 		_damage_cooldown.start(damage_cooldown)

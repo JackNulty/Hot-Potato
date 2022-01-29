@@ -14,7 +14,7 @@ func player_run(run : AudioStream):
 func stop_player_run():
 	$sfx/PlayerRun.stop()
 	
-func _process(delta):
+func _process(_delta):
 	var player = get_tree().get_nodes_in_group("player") [0]
 	$sfx/PlayerRun.translation.x = player.translation.x
 	$sfx/PlayerRun.translation.y = player.translation.y
