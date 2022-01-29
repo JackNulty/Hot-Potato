@@ -6,6 +6,7 @@ export(float) var acceleration = 12
 export(float) var deceleration = 8
 export(float) var jump_speed = 15
 export(float) var mouse_sensitivity = 0.002  # radians/pixel
+export(float) var max_health = 5.0
 
 onready var _camera = get_node("RotationHelper/Camera")
 onready var _rotation_helper = get_node("RotationHelper")
@@ -13,6 +14,7 @@ onready var _left_hand = get_node("CanvasLayer/LeftHand")
 onready var _right_hand = get_node("CanvasLayer/RightHand")
 
 var _velocity = Vector3()
+var _health = 5.0
 
 
 #-------------------------------------------------------------------------------
@@ -71,9 +73,6 @@ func _physics_process(delta):
 	# Gets the player input as a movement vector (method defined below). 
 	var input = get_movement_input()
 	
-	if input.length_squared() != 0.0:
-		pass
-	
 	# Works out the acceleration and deceleration/friction, a little complex.
 	var acceleration_vector = input * acceleration * delta
 	var deceleration_vector = (Vector3.ONE - Vector3(abs(input.x), 1.0, abs(input.z))) * deceleration * delta
@@ -127,5 +126,11 @@ func _on_PickupArea_body_entered(body):
 		elif not _left_hand.holding:
 			_left_hand.equip(body)
 
+
+#-------------------------------------------------------------------------------
+func damage(amount):
+	_health -= amount
+	print(_health)
+	
 
 #-------------------------------------------------------------------------------
