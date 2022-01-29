@@ -36,8 +36,13 @@ func throw():
 
 #-------------------------------------------------------------------------------
 func use():
-	# Uses "holding"
-	pass
-
+	if holding:
+		match holding.type:
+			"sword":
+				parent.damage_all_within_range(holding.damage)
+				
+			"key":
+				pass
+	
 
 #-------------------------------------------------------------------------------

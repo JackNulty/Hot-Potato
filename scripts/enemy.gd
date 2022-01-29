@@ -1,17 +1,28 @@
 extends KinematicBody
 
+signal died
+
 export var target = Vector3.ZERO
 export(float) var gravity = -30
 export(float) var max_speed = 3
 export(float) var acceleration = 20
 export(float) var damage = 1.0
+export(float) var max_health = 1.0
+export(float) var damage_cooldown = 1.0
 
+onready var _damage_cooldown_timer = get_node("DamageCooldown")
 
 var _velocity = Vector3.ZERO
 var _player = null
 var _player_within_damage_range = false
+var _health
 
 
+#-------------------------------------------------------------------------------
+func _ready():
+	_health = max_health
+	
+	
 #-------------------------------------------------------------------------------
 func _physics_process(delta):
 	# Applies gravity.
@@ -66,3 +77,21 @@ func _on_PlayerDamager_body_exited(body):
 
 
 #-------------------------------------------------------------------------------
+func damage(amount):
+	# If the damage cooldown has expired and there's still health left.
+	if _damage_cooldown_timer.is_stopped() and _health > 0:
+		_health -= amount
+		
+		# Starts the damage cooldown timer.
+		_damage_cooldown_timer.start(damage_cooldown)
+		$BloodParticles.emitting = true
+		
+		# Checks if the character has died and prints it out if so.
+		if _health <= 0:
+			_health = 0
+			emit_signal("died")
+			queue_free()
+		
+		
+#-------------------------------------------------------------------------------
+		

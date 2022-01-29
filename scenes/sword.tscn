@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/holdable.tscn" type="PackedScene" id=1]
+
+[node name="Sword" instance=ExtResource( 1 )]
+data = {
+"damage": 2.0,
+"image_2d_path": "res://assets/images/sword_2d.png",
+"image_3d_path": "res://assets/images/sword.png",
+"type": "sword"
+}

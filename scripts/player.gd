@@ -16,7 +16,7 @@ onready var playerwalk : AudioStream = preload("res://assets/audio/sfx/Walk1.wav
 onready var playerrun : AudioStream = preload("res://assets/audio/sfx/Run2.wav")
 onready var _camera = get_node("RotationHelper/Camera")
 onready var _rotation_helper = get_node("RotationHelper")
-onready var _damage_cooldown = get_node("DamageCooldown")
+onready var _damage_cooldown_timer = get_node("DamageCooldown")
 
 onready var _left_hand = get_node("CanvasLayer/LeftHand")
 onready var _right_hand = get_node("CanvasLayer/RightHand")
@@ -26,6 +26,7 @@ onready var _health_bar_fill = get_node("CanvasLayer/HealthBar/Fill")
 
 var _velocity = Vector3()
 var _health
+var _enemies_in_range = []
 
 #-------------------------------------------------------------------------------
 # Runs when this script loads in a scene.
@@ -60,6 +61,11 @@ func _input(event):
 		_left_hand.throw()
 	if event.is_action_pressed("throw_right"):
 		_right_hand.throw()
+		
+	if event.is_action_pressed("use_left"):
+		_left_hand.use()
+	if event.is_action_pressed("use_right"):
+		_right_hand.use()
 
 
 #-------------------------------------------------------------------------------
@@ -147,11 +153,11 @@ func _on_PickupArea_body_entered(body):
 #-------------------------------------------------------------------------------
 func damage(amount):
 	# If the damage cooldown has expired and there's still health left.
-	if _damage_cooldown.is_stopped() and _health > 0:
+	if _damage_cooldown_timer.is_stopped() and _health > 0:
 		_health -= amount
 		
 		# Starts the damage cooldown timer.
-		_damage_cooldown.start(damage_cooldown)
+		_damage_cooldown_timer.start(damage_cooldown)
 		
 		# Checks if the character has died and prints it out if so.
 		if _health <= 0:
@@ -160,6 +166,24 @@ func damage(amount):
 		
 		var health_percent = _health / max_health
 		_health_bar_fill.rect_size.x = _health_bar.rect_size.x * health_percent
-	
+
+
+#-------------------------------------------------------------------------------
+func damage_all_within_range(damage_amount):
+	for enemy in _enemies_in_range:
+		enemy.damage(damage_amount)
+
+
+#-------------------------------------------------------------------------------
+func _on_DamageArea_body_entered(body):
+	if body.is_in_group("enemy"):
+		_enemies_in_range.append(body)
+
+
+#-------------------------------------------------------------------------------
+func _on_DamageArea_body_exited(body):
+	if body.is_in_group("enemy"):
+		_enemies_in_range.erase(body)
+
 
 #-------------------------------------------------------------------------------
