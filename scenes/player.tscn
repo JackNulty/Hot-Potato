@@ -9,7 +9,7 @@
 [sub_resource type="SphereShape" id=3]
 radius = 2.38199
 
-[node name="Player" type="KinematicBody"]
+[node name="Player" type="KinematicBody" groups=["player"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 script = ExtResource( 1 )
 

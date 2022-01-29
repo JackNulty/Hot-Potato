@@ -7,13 +7,15 @@ export(float) var deceleration = 8
 export(float) var jump_speed = 15
 export(float) var mouse_sensitivity = 0.002  # radians/pixel
 
+# preloads for audio effects
+onready var playerwalk : AudioStream = preload("res://assets/audio/sfx/Walk1.wav")
+onready var playerrun : AudioStream = preload("res://assets/audio/sfx/Run2.wav")
 onready var _camera = get_node("RotationHelper/Camera")
 onready var _rotation_helper = get_node("RotationHelper")
 onready var _left_hand = get_node("CanvasLayer/LeftHand")
 onready var _right_hand = get_node("CanvasLayer/RightHand")
 
 var _velocity = Vector3()
-
 
 #-------------------------------------------------------------------------------
 # Runs when this script loads in a scene.
@@ -72,7 +74,9 @@ func _physics_process(delta):
 	var input = get_movement_input()
 	
 	if input.length_squared() != 0.0:
-		pass
+		AudioManager.player_run(playerrun)
+	else:
+		AudioManager.stop_player_run()
 	
 	# Works out the acceleration and deceleration/friction, a little complex.
 	var acceleration_vector = input * acceleration * delta
@@ -100,7 +104,7 @@ func _physics_process(delta):
 #-------------------------------------------------------------------------------
 func get_movement_input():
 	var input_dir = Vector3.ZERO
-	
+
 	# desired move in camera direction
 	if Input.is_action_pressed("move_forward"):
 		input_dir += -global_transform.basis.z
