@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PistolFire1.wav-f7cc2e792374bd8cd9b30c0ac3d999f7.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/PistolFire1.wav"
+dest_files=[ "res://.import/PistolFire1.wav-f7cc2e792374bd8cd9b30c0ac3d999f7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

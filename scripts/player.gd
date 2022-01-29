@@ -11,6 +11,9 @@ export(float) var mouse_sensitivity = 0.002  # radians/pixel
 export(float) var max_health = 5.0
 export(float) var damage_cooldown = 1.0
 
+# preloads for audio effects
+onready var playerwalk : AudioStream = preload("res://assets/audio/sfx/Walk1.wav")
+onready var playerrun : AudioStream = preload("res://assets/audio/sfx/Run2.wav")
 onready var _camera = get_node("RotationHelper/Camera")
 onready var _rotation_helper = get_node("RotationHelper")
 onready var _damage_cooldown = get_node("DamageCooldown")
@@ -23,7 +26,6 @@ onready var _health_bar_fill = get_node("CanvasLayer/HealthBar/Fill")
 
 var _velocity = Vector3()
 var _health
-
 
 #-------------------------------------------------------------------------------
 # Runs when this script loads in a scene.
@@ -83,6 +85,11 @@ func _physics_process(delta):
 	# Gets the player input as a movement vector (method defined below). 
 	var input = get_movement_input()
 	
+	if input.length_squared() != 0.0:
+		AudioManager.player_run(playerrun)
+	else:
+		AudioManager.stop_player_run()
+	
 	# Works out the acceleration and deceleration/friction, a little complex.
 	var acceleration_vector = input * acceleration * delta
 	var deceleration_vector = (Vector3.ONE - Vector3(abs(input.x), 1.0, abs(input.z))) * deceleration * delta
@@ -109,7 +116,7 @@ func _physics_process(delta):
 #-------------------------------------------------------------------------------
 func get_movement_input():
 	var input_dir = Vector3.ZERO
-	
+
 	# desired move in camera direction
 	if Input.is_action_pressed("move_forward"):
 		input_dir += -global_transform.basis.z

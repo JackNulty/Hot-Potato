@@ -14,6 +14,10 @@ config/name="Hot-Potato"
 run/main_scene="res://scenes/gameplay.tscn"
 config/icon="res://assets/images/icon.png"
 
+[autoload]
+
+AudioManager="*res://scenes/audiomanager.tscn"
+
 [input]
 
 move_forward={
