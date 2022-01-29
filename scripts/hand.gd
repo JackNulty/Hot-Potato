@@ -8,6 +8,7 @@ onready var HoldableScene = preload("res://scenes/holdable.tscn")
 onready var _equipped_sprite = get_node("Holdable")
 
 
+#-------------------------------------------------------------------------------
 func equip(holdable):
 	# Drops the item being held if there is one.
 	if holding:
@@ -19,6 +20,7 @@ func equip(holdable):
 	holdable.queue_free()
 	
 
+#-------------------------------------------------------------------------------
 func throw():
 	if holding:
 		var holdable = HoldableScene.instance()
@@ -32,6 +34,10 @@ func throw():
 		#holdable.add_force(parent.global_transform.basis.z * 100, holdable.translation)
 
 
+#-------------------------------------------------------------------------------
 func use():
 	# Uses "holding"
 	pass
+
+
+#-------------------------------------------------------------------------------
