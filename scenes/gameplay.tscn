@@ -16,9 +16,9 @@ transform = Transform( 12.0755, 0, 0, 0, 1, 0, 0, 0, 11.4102, 0, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.6192, 17.1591, 14.6438 )
-max_speed = 10.0
-acceleration = 20.0
-deceleration = 20.0
+max_speed = 20.0
+acceleration = 40.0
+deceleration = 40.0
 max_health = 8.0
 
 [node name="Spatial3" parent="." instance=ExtResource( 3 )]
@@ -129,7 +129,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 155.781, -40.4489, -16.0366 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 167.499, -40.4489, -6.32946 )
 
 [node name="Enemy21" parent="." instance=ExtResource( 5 )]
-transform = Transform( 3, 0, 0, 0, 1.8, 0, 0, 0, 1, 160.111, -40.4489, -6.32946 )
+transform = Transform( 1.2, 0, 0, 0, 1.2, 0, 0, 0, 1, 160.11, -39.7922, -6.32618 )
 max_speed = 10.0
 acceleration = 50.0
 max_health = 20.0

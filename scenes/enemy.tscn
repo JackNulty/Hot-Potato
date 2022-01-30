@@ -54,6 +54,7 @@ animations = [ {
 
 [node name="Enemy" type="KinematicBody" groups=["enemy"]]
 script = ExtResource( 1 )
+max_speed = 5.0
 max_health = 3.0
 damage_cooldown = 0.25
 
