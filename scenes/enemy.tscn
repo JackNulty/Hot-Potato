@@ -1,0 +1,103 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scripts/enemy.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/enemy.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape" id=1]
+
+[sub_resource type="SphereShape" id=2]
+radius = 10.0
+
+[sub_resource type="SphereShape" id=3]
+radius = 1.5
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -3.83879, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+direction = Vector3( 0, 1, 0 )
+gravity = Vector3( 0, -14.7, 0 )
+initial_velocity = 8.0
+damping = 3.0
+scale = 0.1
+scale_curve = SubResource( 5 )
+color = Color( 0.976471, 0, 0, 1 )
+hue_variation = 0.89
+hue_variation_random = 1.0
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.956863, 0.109804, 0.109804, 1 )
+
+[sub_resource type="SphereMesh" id=8]
+material = SubResource( 7 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 19
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 19
+atlas = ExtResource( 2 )
+region = Rect2( 128, 0, 128, 128 )
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+} ]
+
+[node name="Enemy" type="KinematicBody" groups=["enemy"]]
+script = ExtResource( 1 )
+max_health = 3.0
+damage_cooldown = 0.25
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.5, 0 )
+shape = SubResource( 1 )
+
+[node name="CSGCylinder" type="CSGSphere" parent="."]
+transform = Transform( 1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 1.5, 0 )
+visible = false
+
+[node name="PlayerDetector" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="PlayerDetector"]
+shape = SubResource( 2 )
+
+[node name="PlayerDamager" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="PlayerDamager"]
+shape = SubResource( 3 )
+
+[node name="DamageCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="BloodParticles" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 1.0
+visibility_aabb = AABB( -4, -3.67321, -4, 8, 7.34642, 8 )
+local_coords = false
+process_material = SubResource( 6 )
+draw_pass_1 = SubResource( 8 )
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 1, 0, 1.5, 0 )
+billboard = 2
+frames = SubResource( 11 )
+playing = true
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_PlayerDetector_body_exited"]
+[connection signal="body_entered" from="PlayerDamager" to="." method="_on_PlayerDamager_body_entered"]
+[connection signal="body_exited" from="PlayerDamager" to="." method="_on_PlayerDamager_body_exited"]
