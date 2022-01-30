@@ -1,12 +1,14 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/objects/stairs.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://assets/images/floor_text.png" type="Texture" id=2]
-[ext_resource path="res://assets/images/cobble.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/crate.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/roof_text.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/WallTexture_Cobbled.png" type="Texture" id=5]
 
 [sub_resource type="SpatialMaterial" id=1]
-albedo_color = Color( 0.490196, 0.462745, 0.462745, 1 )
-albedo_texture = ExtResource( 3 )
+albedo_texture = ExtResource( 5 )
+uv1_scale = Vector3( 3, 2, 1 )
 
 [sub_resource type="CubeMesh" id=2]
 material = SubResource( 1 )
@@ -16,6 +18,7 @@ points = PoolVector3Array( 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, -1, 1, 1, -1, -1, -1,
 
 [sub_resource type="SpatialMaterial" id=28]
 albedo_texture = ExtResource( 2 )
+uv1_scale = Vector3( 3, 2, 1 )
 
 [sub_resource type="CubeMesh" id=5]
 material = SubResource( 28 )
@@ -24,7 +27,8 @@ material = SubResource( 28 )
 points = PoolVector3Array( 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, -1, 1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1 )
 
 [sub_resource type="SpatialMaterial" id=7]
-albedo_color = Color( 0.768627, 0.133333, 0.133333, 1 )
+albedo_texture = ExtResource( 4 )
+uv1_scale = Vector3( 3, 2, 1 )
 
 [sub_resource type="CubeMesh" id=8]
 material = SubResource( 7 )
@@ -33,15 +37,36 @@ material = SubResource( 7 )
 points = PoolVector3Array( 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, -1, 1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1 )
 
 [sub_resource type="SpatialMaterial" id=24]
-albedo_color = Color( 0.0627451, 0.219608, 0.831373, 1 )
+albedo_texture = ExtResource( 2 )
+uv1_scale = Vector3( 3, 2, 1 )
 
 [sub_resource type="ConcavePolygonShape" id=23]
 data = PoolVector3Array( -1, 1, -1, -0.6, 1, -1, -1, 1, 1, -1, 1, 1, -0.6, 1, -1, -0.6, 1, 1, -0.6, 1, 1, -0.6, 0.6, 1, -1, 1, 1, -1, 1, 1, -0.6, 0.6, 1, -1, 0.6, 1, -1, 1, 1, -1, 0.6, 1, -1, 1, -1, -1, 1, -1, -1, 0.6, 1, -1, 0.6, -1, 1, -1, -1, 0.6, -1, -1, 1, -1, 1, 1, -1, 1, 0.6, -1, -1, 0.6, -1, 1, -1, 1, -1, -1, 0.6, -1, -0.6, 1, -1, -0.6, 1, -1, -1, 0.6, -1, -0.6, 0.6, -1, -0.6, -1, -1, -1, -1, -1, -0.6, -1, 1, -0.6, -1, 1, -1, -1, -1, -1, -1, 1, -0.2, -1, -1, -0.6, -1, -1, -0.2, -1, 1, -0.2, -1, 1, -0.6, -1, -1, -0.6, -1, 1, 0.2, -1, -1, -0.2, -1, -1, 0.2, -1, 1, 0.2, -1, 1, -0.2, -1, -1, -0.2, -1, 1, 0.6, -1, -1, 0.2, -1, -1, 0.6, -1, 1, 0.6, -1, 1, 0.2, -1, -1, 0.2, -1, 1, -0.2, -0.6, 1, -0.2, -1, 1, -0.6, -0.6, 1, -0.6, -0.6, 1, -0.2, -1, 1, -0.6, -1, 1, -0.2, -0.2, 1, -0.2, -0.6, 1, -0.6, -0.2, 1, -0.6, -0.2, 1, -0.2, -0.6, 1, -0.6, -0.6, 1, -0.2, 0.2, 1, -0.2, -0.2, 1, -0.6, 0.2, 1, -0.6, 0.2, 1, -0.2, -0.2, 1, -0.6, -0.2, 1, -0.2, 0.6, 1, -0.2, 0.2, 1, -0.6, 0.6, 1, -0.6, 0.6, 1, -0.2, 0.2, 1, -0.6, 0.2, 1, 0.2, -0.6, 1, 0.2, -1, 1, -0.2, -0.6, 1, -0.2, -0.6, 1, 0.2, -1, 1, -0.2, -1, 1, 0.2, -0.2, 1, 0.2, -0.6, 1, -0.2, -0.2, 1, -0.2, -0.2, 1, 0.2, -0.6, 1, -0.2, -0.6, 1, 0.2, 0.2, 1, 0.2, -0.2, 1, -0.2, 0.2, 1, -0.2, 0.2, 1, 0.2, -0.2, 1, -0.2, -0.2, 1, 0.6, -0.6, 1, 0.6, -1, 1, 0.2, -0.6, 1, 0.2, -0.6, 1, 0.6, -1, 1, 0.2, -1, 1, 0.6, -0.2, 1, 0.6, -0.6, 1, 0.2, -0.2, 1, 0.2, -0.2, 1, 0.6, -0.6, 1, 0.2, -0.6, 1, 1, -0.6, 1, 1, -1, 1, 0.6, -0.6, 1, 0.6, -0.6, 1, 1, -1, 1, 0.6, -1, 1, 0.2, -0.6, -1, 0.2, -1, -1, 0.6, -0.6, -1, 0.6, -0.6, -1, 0.2, -1, -1, 0.6, -1, -1, 0.2, -0.2, -1, 0.2, -0.6, -1, 0.6, -0.2, -1, 0.6, -0.2, -1, 0.2, -0.6, -1, 0.6, -0.6, -1, -0.6, 1, 1, -0.6, 1, -1, -0.6, 0.6, 1, -0.6, 0.6, 1, -0.6, 1, -1, -0.6, 0.6, -1, -0.2, -0.6, -1, -0.2, -1, -1, 0.2, -0.6, -1, 0.2, -0.6, -1, -0.2, -1, -1, 0.2, -1, -1, -0.2, -0.2, -1, -0.2, -0.6, -1, 0.2, -0.2, -1, 0.2, -0.2, -1, -0.2, -0.6, -1, 0.2, -0.6, -1, -0.2, 0.2, -1, -0.2, -0.2, -1, 0.2, 0.2, -1, 0.2, 0.2, -1, -0.2, -0.2, -1, 0.2, -0.2, -1, -0.2, 0.6, -1, -0.2, 0.6, 1, -0.6, 0.6, -1, -0.6, 0.6, -1, -0.2, 0.6, 1, -0.6, 0.6, 1, -0.6, -0.6, -1, -0.6, -1, -1, -0.2, -0.6, -1, -0.2, -0.6, -1, -0.6, -1, -1, -0.2, -1, -1, -0.6, -0.2, -1, -0.6, -0.6, -1, -0.2, -0.2, -1, -0.2, -0.2, -1, -0.6, -0.6, -1, -0.2, -0.6, -1, -0.6, 0.2, -1, -0.6, -0.2, -1, -0.2, 0.2, -1, -0.2, 0.2, -1, -0.6, -0.2, -1, -0.2, -0.2, -1, -0.6, 0.6, -1, -0.6, 0.2, -1, -0.2, 0.6, -1, -0.2, 0.6, -1, -0.6, 0.2, -1, -0.2, 0.2, -1, -1, -0.6, -1, -1, -1, -1, -0.6, -0.6, -1, -0.6, -0.6, -1, -1, -1, -1, -0.6, -1, -1, -1, -0.2, -1, -1, -0.6, -1, -0.6, -0.2, -1, -0.6, -0.2, -1, -1, -0.6, -1, -0.6, -0.6, -1, -1, 0.2, -1, -1, -0.2, -1, -0.6, 0.2, -1, -0.6, 0.2, -1, -1, -0.2, -1, -0.6, -0.2, -1, -1, 0.6, -1, -1, 0.2, -1, -0.6, 0.6, -1, -0.6, 0.6, -1, -1, 0.2, -1, -0.6, 0.2, -1, 0.6, -0.6, -1, 0.6, -1, -1, 1, -0.6, -1, 1, -0.6, -1, 0.6, -1, -1, 1, -1, -1, -0.2, 0.6, -1, -0.2, 0.2, -1, -0.2, 0.6, 1, -0.2, 0.6, 1, -0.2, 0.2, -1, -0.2, 0.2, 1, 0.2, 0.2, -1, 0.2, 0.2, 1, -0.2, 0.2, -1, -0.2, 0.2, -1, 0.2, 0.2, 1, -0.2, 0.2, 1, 0.2, 0.2, -1, 0.2, -0.2, -1, 0.2, 0.2, 1, 0.2, 0.2, 1, 0.2, -0.2, -1, 0.2, -0.2, 1, 1, -0.6, -1, 1, -1, -1, 1, -0.6, 1, 1, -0.6, 1, 1, -1, -1, 1, -1, 1, 0.6, -0.2, -1, 0.6, -0.6, -1, 0.6, -0.2, 1, 0.6, -0.2, 1, 0.6, -0.6, -1, 0.6, -0.6, 1, 0.6, -0.2, -1, 0.6, -0.2, 1, 0.2, -0.2, -1, 0.2, -0.2, -1, 0.6, -0.2, 1, 0.2, -0.2, 1, 1, -0.6, -1, 1, -0.6, 1, 0.6, -0.6, -1, 0.6, -0.6, -1, 1, -0.6, 1, 0.6, -0.6, 1, -1, -0.6, 1, -1, -1, 1, -1, -0.6, -1, -1, -0.6, -1, -1, -1, 1, -1, -1, -1, -1, -0.2, 1, -1, -0.6, 1, -1, -0.2, -1, -1, -0.2, -1, -1, -0.6, 1, -1, -0.6, -1, -1, 0.2, 1, -1, -0.2, 1, -1, 0.2, -1, -1, 0.2, -1, -1, -0.2, 1, -1, -0.2, -1, -1, 0.6, 1, -1, 0.2, 1, -1, 0.6, -1, -1, 0.6, -1, -1, 0.2, 1, -1, 0.2, -1, -0.6, -0.6, 1, -0.6, -1, 1, -1, -0.6, 1, -1, -0.6, 1, -0.6, -1, 1, -1, -1, 1, -0.6, -0.2, 1, -0.6, -0.6, 1, -1, -0.2, 1, -1, -0.2, 1, -0.6, -0.6, 1, -1, -0.6, 1, -0.6, 0.2, 1, -0.6, -0.2, 1, -1, 0.2, 1, -1, 0.2, 1, -0.6, -0.2, 1, -1, -0.2, 1, -0.6, 0.6, 1, -0.6, 0.2, 1, -1, 0.6, 1, -1, 0.6, 1, -0.6, 0.2, 1, -1, 0.2, 1 )
 
+[sub_resource type="PrismMesh" id=46]
+left_to_right = 1.0
+
+[sub_resource type="SpatialMaterial" id=41]
+albedo_texture = ExtResource( 2 )
+uv1_scale = Vector3( 3, 2, 1 )
+
+[sub_resource type="ConcavePolygonShape" id=45]
+data = PoolVector3Array( 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, 1, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
+
+[sub_resource type="CubeMesh" id=66]
+size = Vector3( 1.5, 1.5, 1.5 )
+
+[sub_resource type="SpatialMaterial" id=61]
+albedo_texture = ExtResource( 3 )
+uv1_scale = Vector3( 3, 2, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=65]
+points = PoolVector3Array( 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, -1, 1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1 )
+
 [node name="Spatial" type="Spatial"]
 
 [node name="Cobbled Wall" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.603937, -0.0297878, 2.3179 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55481, -0.000394128, 2.87751 )
 mesh = SubResource( 2 )
 material/0 = null
 
@@ -51,17 +76,18 @@ material/0 = null
 shape = SubResource( 3 )
 
 [node name="Floor" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.59312, -0.0201972, 0.0474579 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.59513, 0.0133123, 0.0284636 )
 mesh = SubResource( 5 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Floor"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Floor/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0243964, -0.0145023, 0 )
 shape = SubResource( 6 )
 
 [node name="Ceiling" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.948113, 0.00588727, 0.0320296 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17068, -0.0911946, 0.129759 )
 mesh = SubResource( 8 )
 material/0 = null
 
@@ -79,3 +105,23 @@ material/0 = SubResource( 24 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Stairs/StaticBody"]
 shape = SubResource( 23 )
+
+[node name="Slope" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.92311 )
+mesh = SubResource( 46 )
+material/0 = SubResource( 41 )
+
+[node name="StaticBody" type="StaticBody" parent="Slope"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Slope/StaticBody"]
+shape = SubResource( 45 )
+
+[node name="Crate" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.59274, -0.0640101, 5.37997 )
+mesh = SubResource( 66 )
+material/0 = SubResource( 61 )
+
+[node name="StaticBody" type="StaticBody" parent="Crate"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Crate/StaticBody"]
+shape = SubResource( 65 )
