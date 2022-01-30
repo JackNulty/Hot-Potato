@@ -1,5 +1,6 @@
 extends Node2D
 
+signal win_item_picked_up
 
 var holding = null
 var parent = null
@@ -18,6 +19,9 @@ func equip(holdable):
 	holding = holdable.data
 	_equipped_sprite.texture = holdable.get_2d_image()
 	holdable.queue_free()
+	
+	if holding.type == "win_item":
+		emit_signal("win_item_picked_up")
 	
 
 #-------------------------------------------------------------------------------
