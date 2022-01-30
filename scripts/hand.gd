@@ -1,5 +1,6 @@
 extends Node2D
 
+signal win_item_picked_up
 
 var holding = null
 var parent = null
@@ -8,6 +9,7 @@ onready var HoldableScene = preload("res://scenes/holdable.tscn")
 onready var _equipped_sprite = get_node("Holdable")
 
 
+#-------------------------------------------------------------------------------
 func equip(holdable):
 	# Drops the item being held if there is one.
 	if holding:
@@ -18,7 +20,11 @@ func equip(holdable):
 	_equipped_sprite.texture = holdable.get_2d_image()
 	holdable.queue_free()
 	
+	if holding.type == "win_item":
+		emit_signal("win_item_picked_up")
+	
 
+#-------------------------------------------------------------------------------
 func throw():
 	if holding:
 		var holdable = HoldableScene.instance()
@@ -32,6 +38,15 @@ func throw():
 		#holdable.add_force(parent.global_transform.basis.z * 100, holdable.translation)
 
 
+#-------------------------------------------------------------------------------
 func use():
-	# Uses "holding"
-	pass
+	if holding:
+		match holding.type:
+			"sword":
+				parent.damage_all_within_range(holding.damage)
+				
+			"key":
+				pass
+	
+
+#-------------------------------------------------------------------------------
