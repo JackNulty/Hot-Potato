@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/block.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/sword.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/enemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/key.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/holdable.gd" type="Script" id=7]
 
 [node name="Gameplay" type="Spatial"]
 
@@ -26,6 +27,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25263, 3.29117, 0 )
 
 [node name="Sword" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7422, 4.23935, -1.18058 )
+script = ExtResource( 7 )
 data = {
 "damage": 2.0,
 "image_2d_path": "res://assets/images/sword_2d.png",
@@ -35,6 +37,7 @@ data = {
 
 [node name="Sword2" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.88664, 4.23935, 4.67155 )
+script = ExtResource( 7 )
 data = {
 "damage": 2.0,
 "image_2d_path": "res://assets/images/sword_2d.png",
@@ -44,6 +47,7 @@ data = {
 
 [node name="Sword3" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.823126, 0, 0.567858, -0.188994, 0.942991, 0.273953, -0.535485, -0.33282, 0.7762, -5.67845, 5.68307, 4.1724 )
+script = ExtResource( 7 )
 data = {
 "damage": 2.0,
 "image_2d_path": "res://assets/images/sword_2d.png",

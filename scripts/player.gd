@@ -174,6 +174,15 @@ func damage(amount):
 			emit_signal("died")
 		
 		var health_percent = _health / max_health
+		
+		if health_percent < 0.333:
+			$CanvasLayer/LeftHand/Hand.frame = 2
+			$CanvasLayer/RightHand/Hand.frame = 2
+			
+		elif health_percent < 0.666:
+			$CanvasLayer/LeftHand/Hand.frame = 1
+			$CanvasLayer/RightHand/Hand.frame = 1
+			
 		_health_bar_fill.rect_size.x = _health_bar.rect_size.x * health_percent
 
 

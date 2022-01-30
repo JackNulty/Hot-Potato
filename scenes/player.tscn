@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/thumb.png" type="Texture" id=2]
 [ext_resource path="res://scripts/hand.gd" type="Script" id=3]
 [ext_resource path="res://assets/images/empty_hand.png" type="Texture" id=4]
 
@@ -37,13 +38,23 @@ script = ExtResource( 3 )
 [node name="Hand" type="Sprite" parent="CanvasLayer/LeftHand"]
 position = Vector2( 253, 495 )
 scale = Vector2( -2, 2 )
+z_index = -5
 texture = ExtResource( 4 )
+hframes = 3
+
+[node name="Thumb" type="Sprite" parent="CanvasLayer/LeftHand/Hand"]
+position = Vector2( -42.7, 0 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+z_index = 10
+texture = ExtResource( 2 )
+flip_h = true
+hframes = 3
 
 [node name="Holdable" type="Sprite" parent="CanvasLayer/LeftHand"]
 position = Vector2( 278, 398 )
 rotation = -1.065
 scale = Vector2( 2, 2 )
-z_index = -1
 
 [node name="RightHand" type="Node2D" parent="CanvasLayer"]
 script = ExtResource( 3 )
@@ -51,13 +62,20 @@ script = ExtResource( 3 )
 [node name="Hand" type="Sprite" parent="CanvasLayer/RightHand"]
 position = Vector2( 785, 495 )
 scale = Vector2( 2, 2 )
+z_index = -5
 texture = ExtResource( 4 )
+hframes = 3
+
+[node name="Thumb" type="Sprite" parent="CanvasLayer/RightHand/Hand"]
+position = Vector2( -42.7, 0 )
+z_index = 10
+texture = ExtResource( 2 )
+hframes = 3
 
 [node name="Holdable" type="Sprite" parent="CanvasLayer/RightHand"]
 position = Vector2( 764, 400 )
 rotation = -0.466187
 scale = Vector2( 2, 2 )
-z_index = -1
 
 [node name="HealthBar" type="ColorRect" parent="CanvasLayer"]
 anchor_left = 0.5
