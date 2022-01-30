@@ -24,10 +24,37 @@ max_health = 8.0
 [node name="Spatial3" parent="." instance=ExtResource( 3 )]
 
 [node name="Enemy" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25263, 3.29117, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.8836, 2.36328, 14.4321 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.8836, 2.36328, 5.4972 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.8836, 2.36328, -7.72812 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50.7675, 2.36328, -7.72812 )
+
+[node name="Enemy5" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 54.1607, 2.36328, 1.45921 )
+
+[node name="Enemy6" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 58.4697, 2.36328, 9.58972 )
+
+[node name="Enemy7" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 58.4697, 2.36328, -2.46973 )
+
+[node name="Enemy8" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 58.4697, 2.36328, 28.161 )
+
+[node name="Enemy9" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.6056, 2.36328, 38.1537 )
+
+[node name="Enemy10" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.6056, 2.36328, 38.1537 )
 
 [node name="Sword" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7422, 4.23935, -1.18058 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.79577, 15.3794, 25.0171 )
 data = {
 "damage": 2.0,
 "image_2d_path": "res://assets/images/sword_2d.png",
@@ -39,7 +66,7 @@ data = {
 visible = false
 
 [node name="Sword2" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.88664, 4.23935, 4.67155 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8479, 15.8356, 18.3888 )
 data = {
 "damage": 2.0,
 "image_2d_path": "res://assets/images/sword_2d.png",
@@ -73,3 +100,39 @@ data = {
 "image_3d_path": "res://assets/images/potato.png",
 "type": "win_item"
 }
+
+[node name="Enemy11" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 96.7887, -16.4495, 12.7667 )
+
+[node name="Enemy12" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 97.2492, -16.1923, -4.33058 )
+
+[node name="Enemy14" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 134.749, -40.4489, -1.45041 )
+
+[node name="Enemy15" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 141.194, -40.4489, -8.50183 )
+
+[node name="Enemy16" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 141.194, -40.4489, 8.59017 )
+
+[node name="Enemy17" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 155.781, -40.4489, 8.59017 )
+
+[node name="Enemy18" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 155.781, -40.4489, -5.16013 )
+
+[node name="Enemy19" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 155.781, -40.4489, -16.0366 )
+
+[node name="Enemy20" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 167.499, -40.4489, -6.32946 )
+
+[node name="Enemy21" parent="." instance=ExtResource( 5 )]
+transform = Transform( 3, 0, 0, 0, 1.8, 0, 0, 0, 1, 160.111, -40.4489, -6.32946 )
+max_speed = 10.0
+acceleration = 50.0
+max_health = 20.0
+
+[node name="Enemy13" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 97.2724, -16.1923, 4.19684 )
