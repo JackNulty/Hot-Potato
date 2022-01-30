@@ -1,7 +1,7 @@
 extends RigidBody
 
 var locked = true
-var data = {
+export var data = {
 	type = "sword",
 	image_2d_path = "res://assets/images/sword_2d.png",
 	image_3d_path = "res://assets/images/sword.png",
@@ -9,7 +9,11 @@ var data = {
 
 onready var _sprite = get_node("Sprite3D")
 
-
+#-------------------------------------------------------------------------------
+func _ready():
+	set_texture()
+	
+	
 #-------------------------------------------------------------------------------
 func get_data():
 	return load(data.image_path)
