@@ -67,7 +67,7 @@ data = {
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.63756, -6.51444, 0 )
 
 [node name="Holdable" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.94421, 5.18118, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 185.461, -39.0721, -4.89763 )
 data = {
 "image_2d_path": "res://assets/images/potato_2d.png",
 "image_3d_path": "res://assets/images/potato.png",
