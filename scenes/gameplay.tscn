@@ -49,6 +49,7 @@ data = {
 "image_2d_path": "res://assets/images/sword_2d.png",
 "image_3d_path": "res://assets/images/sword.png",
 "type": "sword"
+}
 
 [node name="Holdable4" parent="." instance=ExtResource( 6 )]
 data = {

@@ -7,7 +7,7 @@ func _ready():
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), -12) # change the number value to adjust the music volume
 #-----------------------------------------------------------------------
 # makes player sfx and music follow player
-func _process(delta):
+func _process(_delta):
 	var player = get_tree().get_nodes_in_group("player") [0]
 	$sfx/PlayerSFX.translation.x = player.translation.x
 	$sfx/PlayerSFX.translation.y = player.translation.y

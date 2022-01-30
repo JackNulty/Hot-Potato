@@ -10,6 +10,7 @@
 radius = 2.38199
 
 [sub_resource type="CylinderShape" id=4]
+radius = 1.5
 
 [node name="Player" type="KinematicBody" groups=["player"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )

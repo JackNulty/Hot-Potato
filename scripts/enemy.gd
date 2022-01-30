@@ -6,7 +6,7 @@ export var target = Vector3.ZERO
 export(float) var gravity = -30
 export(float) var max_speed = 3
 export(float) var acceleration = 20
-export(float) var damage = 1.0
+export(float) var attack_damage = 1.0
 export(float) var max_health = 1.0
 export(float) var damage_cooldown = 1.0
 
@@ -48,7 +48,7 @@ func _physics_process(delta):
 	
 	# Damages the player if still within range.
 	if _player_within_damage_range and _player:
-		_player.damage(damage)
+		_player.damage(attack_damage)
 
 
 #-------------------------------------------------------------------------------
@@ -67,7 +67,7 @@ func _on_PlayerDetector_body_exited(body):
 func _on_PlayerDamager_body_entered(body):
 	if body.is_in_group("player"):
 		_player_within_damage_range = true
-		_player.damage(damage)
+		_player.damage(attack_damage)
 
 
 #-------------------------------------------------------------------------------
