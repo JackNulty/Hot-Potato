@@ -14,6 +14,10 @@ export(float) var damage_cooldown = 1.0
 # preloads for audio effects
 onready var playerwalk : AudioStream = preload("res://assets/audio/sfx/Walk1.wav")
 onready var playerrun : AudioStream = preload("res://assets/audio/sfx/Run2.wav")
+onready var playeritempickup : AudioStream = preload("res://assets/audio/sfx/ItemPickup1.wav")
+onready var playeritemdrop : AudioStream = preload("res://assets/audio/sfx/ItemDrop1.wav")
+onready var music : AudioStream = preload("res://assets/audio/music/MusicLoop.wav")
+
 onready var _camera = get_node("RotationHelper/Camera")
 onready var _rotation_helper = get_node("RotationHelper")
 onready var _damage_cooldown_timer = get_node("DamageCooldown")
@@ -41,6 +45,7 @@ func _ready():
 	_right_hand.parent = self
 	
 	_health = max_health
+	AudioManager.music_player(music)
 	
 
 #-------------------------------------------------------------------------------
@@ -59,8 +64,10 @@ func _input(event):
 	# Throws the item in either hand if the throw button was pressed.
 	if event.is_action_pressed("throw_left"):
 		_left_hand.throw()
+		AudioManager.player_itemdrop(playeritemdrop)
 	if event.is_action_pressed("throw_right"):
 		_right_hand.throw()
+		AudioManager.player_itemdrop(playeritemdrop)
 		
 	if event.is_action_pressed("use_left"):
 		_left_hand.use()
@@ -144,10 +151,12 @@ func _on_PickupArea_body_entered(body):
 		# If not holding something in the right hand, equip the holdable there.
 		if not _right_hand.holding:
 			_right_hand.equip(body)
+			AudioManager.player_itempickup(playeritempickup)
 		
 		# If not holding something in the left hand, equip the holdable there.
 		elif not _left_hand.holding:
 			_left_hand.equip(body)
+			AudioManager.player_itempickup(playeritempickup)
 
 
 #-------------------------------------------------------------------------------

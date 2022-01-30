@@ -9,7 +9,11 @@ export var data = {
 
 onready var _sprite = get_node("Sprite3D")
 
-
+#-------------------------------------------------------------------------------
+func _ready():
+	set_texture()
+	
+	
 #-------------------------------------------------------------------------------
 func get_data():
 	return load(data.image_path)
