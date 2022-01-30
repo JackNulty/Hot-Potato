@@ -2,7 +2,7 @@ extends RigidBody
 
 var locked = true
 export var data = {
-	type = "sword",
+	type = "win_item",
 	image_2d_path = "res://assets/images/sword_2d.png",
 	image_3d_path = "res://assets/images/sword.png",
 }

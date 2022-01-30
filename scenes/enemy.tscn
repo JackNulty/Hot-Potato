@@ -95,6 +95,7 @@ draw_pass_1 = SubResource( 8 )
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 1, 0, 1.5, 0 )
 billboard = 2
 frames = SubResource( 11 )
+frame = 1
 playing = true
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]

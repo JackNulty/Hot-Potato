@@ -53,7 +53,9 @@ func _ready():
 func _input(event):
 	# Quits the game.
 	if event.is_action_pressed("quit"):
-		get_tree().quit()
+		get_tree().paused = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		$CanvasLayer/PauseMenu.show()
 	
 	# If the cursor isn't captured, captures it and handles the input.
 	if event.is_action_pressed("click"):
@@ -174,6 +176,15 @@ func damage(amount):
 			emit_signal("died")
 		
 		var health_percent = _health / max_health
+		
+		if health_percent < 0.333:
+			$CanvasLayer/LeftHand/Hand.frame = 2
+			$CanvasLayer/RightHand/Hand.frame = 2
+			
+		elif health_percent < 0.666:
+			$CanvasLayer/LeftHand/Hand.frame = 1
+			$CanvasLayer/RightHand/Hand.frame = 1
+			
 		_health_bar_fill.rect_size.x = _health_bar.rect_size.x * health_percent
 
 
@@ -193,6 +204,25 @@ func _on_DamageArea_body_entered(body):
 func _on_DamageArea_body_exited(body):
 	if body.is_in_group("enemy"):
 		_enemies_in_range.erase(body)
+
+
+#-------------------------------------------------------------------------------
+func _on_win_item_picked_up():
+	$CanvasLayer/WinText.show()
+
+
+#-------------------------------------------------------------------------------
+func _on_ResumeButton_pressed():
+	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	$CanvasLayer/PauseMenu.hide()
+
+
+#-------------------------------------------------------------------------------
+func _on_ExitButton_pressed():
+	get_tree().paused = false
+	if get_tree().change_scene("res://scenes/main_menu.tscn") != OK:
+		print("Error switching from Gameplay to Main Menu.")
 
 
 #-------------------------------------------------------------------------------
