@@ -53,7 +53,9 @@ func _ready():
 func _input(event):
 	# Quits the game.
 	if event.is_action_pressed("quit"):
-		get_tree().quit()
+		get_tree().paused = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		$CanvasLayer/PauseMenu.show()
 	
 	# If the cursor isn't captured, captures it and handles the input.
 	if event.is_action_pressed("click"):
@@ -207,6 +209,20 @@ func _on_DamageArea_body_exited(body):
 #-------------------------------------------------------------------------------
 func _on_win_item_picked_up():
 	$CanvasLayer/WinText.show()
+
+
+#-------------------------------------------------------------------------------
+func _on_ResumeButton_pressed():
+	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	$CanvasLayer/PauseMenu.hide()
+
+
+#-------------------------------------------------------------------------------
+func _on_ExitButton_pressed():
+	get_tree().paused = false
+	if get_tree().change_scene("res://scenes/main_menu.tscn") != OK:
+		print("Error switching from Gameplay to Main Menu.")
 
 
 #-------------------------------------------------------------------------------
